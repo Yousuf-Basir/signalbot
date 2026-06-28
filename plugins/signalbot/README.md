@@ -60,7 +60,36 @@ The tool returns:
 - path to `messages_transcript.txt`
 - human-readable transcript text
 
-## Install / Enable
+## Install From GitHub
+
+Private repository:
+
+```text
+https://github.com/Yousuf-Basir/signalbot
+```
+
+Git clone URL:
+
+```text
+https://github.com/Yousuf-Basir/signalbot.git
+```
+
+Use this URL when Codex asks for a GitHub plugin/repository source.
+
+After cloning, install the Python dependencies from the repository root:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+The plugin expects Signal Desktop data to exist on the same Windows user account at:
+
+```text
+%APPDATA%\Signal
+```
+
+## Install / Enable Locally
 
 This plugin lives at:
 
@@ -75,6 +104,18 @@ D:\personal\signalbot\.agents\plugins\marketplace.json
 ```
 
 In Codex, add/install the `signalbot` plugin from that local marketplace. After enabling it, ask Codex natural-language Signal questions like the examples above.
+
+If Codex asks for the marketplace file path, use:
+
+```text
+D:\personal\signalbot\.agents\plugins\marketplace.json
+```
+
+If Codex asks for the plugin folder path directly, use:
+
+```text
+D:\personal\signalbot\plugins\signalbot
+```
 
 ## Privacy Notes
 
