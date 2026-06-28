@@ -1,4 +1,5 @@
 .venv/
+plugins/signalbot/.venv/
 __pycache__/
 *.py[cod]
 
@@ -6,6 +7,9 @@ __pycache__/
 conversations.json
 messages.json
 messages_transcript.txt
+plugins/signalbot/runtime/conversations.json
+plugins/signalbot/runtime/messages.json
+plugins/signalbot/runtime/messages_transcript.txt
 
 # Local/runtime noise.
 .pytest_cache/

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from datetime import datetime, timedelta, timezone
@@ -8,9 +9,10 @@ from pathlib import Path
 from typing import Any, Callable
 
 
-APP_ROOT = Path(__file__).resolve().parents[3]
-if str(APP_ROOT) not in sys.path:
-    sys.path.insert(0, str(APP_ROOT))
+PLUGIN_ROOT = Path(__file__).resolve().parents[1]
+RUNTIME_ROOT = PLUGIN_ROOT / "runtime"
+if str(RUNTIME_ROOT) not in sys.path:
+    sys.path.insert(0, str(RUNTIME_ROOT))
 
 from message_transcript import MessageTranscriptRenderer
 from signal_messages import (
@@ -23,7 +25,7 @@ from signal_messages import (
 )
 
 
-TRANSCRIPT_OUTPUT = APP_ROOT / "messages_transcript.txt"
+TRANSCRIPT_OUTPUT = Path(os.environ.get("SIGNALBOT_OUTPUT_DIR", Path(os.environ["LOCALAPPDATA"]) / "SignalbotCodex")) / "messages_transcript.txt"
 
 
 def json_response(result: Any, request_id: Any) -> dict[str, Any]:

@@ -2,10 +2,18 @@
 
 Signalbot lets Codex read your local Signal Desktop conversations through a local MCP server, then summarize, filter, or draft replies using the message context.
 
-The plugin uses the Python app in `D:\personal\signalbot`. It reads Signal Desktop's local encrypted database as your Windows user, copies it to a temp file, opens the copy read-only, and writes exported results to:
+The plugin reads Signal Desktop's local encrypted database as your Windows user, copies it to a temp file, opens the copy read-only, and writes exported results to a user-local output folder.
 
-- `D:\personal\signalbot\messages.json`
-- `D:\personal\signalbot\messages_transcript.txt`
+By default on Windows, outputs are written under:
+
+```text
+%LOCALAPPDATA%\SignalbotCodex
+```
+
+The main output files are:
+
+- `messages.json`
+- `messages_transcript.txt`
 
 Both files are overwritten each time messages are fetched.
 
@@ -60,9 +68,9 @@ The tool returns:
 - path to `messages_transcript.txt`
 - human-readable transcript text
 
-## Install From GitHub
+## Install From GitHub Marketplace
 
-Private repository:
+Public repository:
 
 ```text
 https://github.com/Yousuf-Basir/signalbot
@@ -74,14 +82,47 @@ Git clone URL:
 https://github.com/Yousuf-Basir/signalbot.git
 ```
 
-Use this URL when Codex asks for a GitHub plugin/repository source.
+In Codex, open **Add plugin marketplace** and use:
 
-After cloning, install the Python dependencies from the repository root:
+```text
+Source:
+Yousuf-Basir/signalbot
+
+Git ref:
+main
+
+Sparse paths:
+.agents/plugins
+plugins/signalbot
+```
+
+This lets Codex load the marketplace directly from GitHub. Users do not need to clone the repository manually.
+
+The GitHub marketplace entry points to:
+
+```text
+plugins/signalbot
+```
+
+The plugin is self-contained: its MCP server, runtime code, skill, and Python requirements all live inside the plugin folder.
+
+## Requirements
+
+Signalbot currently targets Windows Signal Desktop because it uses the current Windows user session to decrypt Signal Desktop's local database.
+
+Users need:
+
+- Signal Desktop installed and linked
+- Python available as `python` on PATH
+- internet access the first time the MCP server starts, so the plugin can create its local virtual environment and install dependencies
+
+On first MCP startup, the plugin runs:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+python ./mcp/bootstrap.py
 ```
+
+That bootstrap creates a plugin-local `.venv` and installs `plugins/signalbot/requirements.txt`.
 
 The plugin expects Signal Desktop data to exist on the same Windows user account at:
 
@@ -91,16 +132,16 @@ The plugin expects Signal Desktop data to exist on the same Windows user account
 
 ## Install / Enable Locally
 
-This plugin lives at:
+If you clone the repository manually, this plugin lives at:
 
 ```text
-D:\personal\signalbot\plugins\signalbot
+<repo-root>\plugins\signalbot
 ```
 
 The repo-local marketplace file is:
 
 ```text
-D:\personal\signalbot\.agents\plugins\marketplace.json
+<repo-root>\.agents\plugins\marketplace.json
 ```
 
 In Codex, add/install the `signalbot` plugin from that local marketplace. After enabling it, ask Codex natural-language Signal questions like the examples above.
@@ -108,13 +149,13 @@ In Codex, add/install the `signalbot` plugin from that local marketplace. After 
 If Codex asks for the marketplace file path, use:
 
 ```text
-D:\personal\signalbot\.agents\plugins\marketplace.json
+<repo-root>\.agents\plugins\marketplace.json
 ```
 
 If Codex asks for the plugin folder path directly, use:
 
 ```text
-D:\personal\signalbot\plugins\signalbot
+<repo-root>\plugins\signalbot
 ```
 
 ## Privacy Notes

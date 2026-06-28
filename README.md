@@ -47,6 +47,16 @@ The repo-local marketplace file lives at:
 
 See [plugins/signalbot/README.md](plugins/signalbot/README.md) for Codex plugin usage.
 
+To add the plugin marketplace directly from GitHub in Codex:
+
+```text
+Source: Yousuf-Basir/signalbot
+Git ref: main
+Sparse paths:
+.agents/plugins
+plugins/signalbot
+```
+
 ## Privacy
 
 Signalbot is intended for your own local Signal Desktop account. It does not modify Signal's database. Runtime exports such as `messages.json`, `messages_transcript.txt`, and `conversations.json` are ignored by git because they can contain private conversation data.

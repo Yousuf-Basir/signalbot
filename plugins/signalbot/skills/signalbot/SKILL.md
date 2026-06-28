@@ -62,4 +62,4 @@ Call `signalbot_get_messages` with the likely project group and `sender_name: "Y
 
 - Only use this for the current user's local Signal Desktop data.
 - Do not modify Signal's database.
-- Mention that `D:\personal\signalbot\messages.json` and `D:\personal\signalbot\messages_transcript.txt` are overwritten on each fetch.
+- Mention that the returned `messages_json` and `transcript_file` paths are overwritten on each fetch.

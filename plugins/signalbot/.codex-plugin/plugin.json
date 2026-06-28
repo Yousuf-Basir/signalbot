@@ -1,7 +1,7 @@
 {
   "name": "signalbot",
   "version": "0.1.0",
-  "description": "Read and summarize local Signal Desktop conversations through a private local MCP server.",
+  "description": "Read and summarize local Signal Desktop conversations through a local MCP server.",
   "author": {
     "name": "Yousuf"
   },

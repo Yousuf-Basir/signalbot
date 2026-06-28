@@ -1,12 +1,12 @@
 {
   "mcpServers": {
     "signalbot": {
-      "cwd": "D:\\personal\\signalbot",
-      "command": "D:\\personal\\signalbot\\.venv\\Scripts\\python.exe",
+      "cwd": ".",
+      "command": "python",
       "args": [
-        "D:\\personal\\signalbot\\plugins\\signalbot\\mcp\\signalbot_mcp_server.py"
+        "./mcp/bootstrap.py"
       ],
-      "note": "Local stdio MCP server for reading the current user's Signal Desktop message database through the Signalbot Python app."
+      "note": "Local stdio MCP server for reading the current user's Signal Desktop message database. The bootstrap script creates a plugin-local Python virtual environment and installs requirements on first run."
     }
   }
 }
