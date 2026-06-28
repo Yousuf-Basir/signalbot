@@ -1,0 +1,20 @@
+{
+  "name": "signalbot-local",
+  "interface": {
+    "displayName": "Signalbot Local"
+  },
+  "plugins": [
+    {
+      "name": "signalbot",
+      "source": {
+        "source": "local",
+        "path": "./plugins/signalbot"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "signalbot",
+  "version": "0.1.0",
+  "description": "Read and summarize local Signal Desktop conversations through a private local MCP server.",
+  "author": {
+    "name": "Yousuf"
+  },
+  "license": "MIT",
+  "keywords": [
+    "signal",
+    "messages",
+    "transcript",
+    "mcp",
+    "local"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Signalbot",
+    "shortDescription": "Read and summarize local Signal Desktop messages.",
+    "longDescription": "Signalbot gives Codex local MCP tools and a skill for fetching Signal Desktop conversation messages, filtering by sender or mentions, rendering transcripts, summarizing context, and drafting replies.",
+    "developerName": "Yousuf",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "defaultPrompt": [
+      "List my recent Signal conversations.",
+      "Summarize yesterday's messages from a Signal group.",
+      "Draft a reply using Signal and project context."
+    ],
+    "brandColor": "#3A76F0"
+  },
+  "mcpServers": "./.mcp.json"
+}
