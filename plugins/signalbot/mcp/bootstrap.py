@@ -61,6 +61,7 @@ def main() -> None:
         print(f"Signalbot failed to prepare its Python environment: {exc}", file=sys.stderr)
         sys.exit(1)
 
+    os.environ["PYTHONIOENCODING"] = "utf-8"
     os.execv(str(python_path), [str(python_path), str(SERVER)])
 
 

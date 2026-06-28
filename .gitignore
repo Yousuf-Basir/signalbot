@@ -17,3 +17,4 @@ plugins/signalbot/runtime/messages_transcript.txt
 .ruff_cache/
 .DS_Store
 Thumbs.db
+SIGNALBOT_PLUGIN_ISSUES.md

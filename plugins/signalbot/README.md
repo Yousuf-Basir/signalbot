@@ -14,8 +14,10 @@ The main output files are:
 
 - `messages.json`
 - `messages_transcript.txt`
+- `signalbot.log`
 
-Both files are overwritten each time messages are fetched.
+The latest `messages.json` and `messages_transcript.txt` files are overwritten each time messages are fetched.
+Single-conversation fetches also write timestamped request-scoped files by default, and multi-conversation searches write timestamped `search_*.json` files.
 
 ## What It Provides
 
@@ -23,6 +25,7 @@ MCP tools:
 
 - `signalbot_list_recent_conversations`
 - `signalbot_get_messages`
+- `signalbot_search_messages`
 - `signalbot_render_current_transcript`
 
 Codex skill:
@@ -57,16 +60,29 @@ List my recent Signal conversations.
 - `sender_name`: optional participant filter, such as `Yann` or `Shakil bhai`
 - `only_mentions_to_me`: optional boolean
 - `limit`: maximum messages returned after filtering
+- `preserve_output`: when true, also writes timestamped request-scoped output files
 
 The tool returns:
 
 - conversation metadata
 - timeframe metadata
 - participant name map
+- available sender names for the scanned conversation/timeframe
 - message count
 - path to `messages.json`
 - path to `messages_transcript.txt`
+- preserved request-scoped output paths when enabled
 - human-readable transcript text
+
+`signalbot_search_messages` accepts:
+
+- `conversation_names_or_ids`: optional list of conversations to scan
+- `sender_names`: optional list of participant names, such as `Yann` or `Shakil`
+- `timeframe`: examples include `5 days`, `yesterday`, `12h`
+- `include_mentions_to_me`: include messages where Signal marks the user as mentioned
+- `recent_group_limit`: when no conversation is supplied, scan matching direct chats plus recent groups
+
+Use this tool for prompts like "what did Yann and Shakil ask me in the last 5 days?" where relevant messages may be spread across direct chats and groups.
 
 ## Install From GitHub Marketplace
 
